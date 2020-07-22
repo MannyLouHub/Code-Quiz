@@ -6,8 +6,8 @@ var cardBody = document.querySelector(".card-body");
 // value of Current Questions.
 var currentQuestion = 0;
 //value of Timer
-var count = 60
-var countdown
+var count = 60;
+var countdown;
 
 
 
@@ -50,12 +50,12 @@ const testQuestions = [
 
 // Start Button
 function start() {
-    var startButton = document.createElement("button")
+    var startButton = document.createElement("button");
     startButton.setAttribute("class", " col-12 btn btn-primary mt-1");
-    startButton.id = 'start-button'
+    startButton.id = 'start-button';
 
     cardBody.appendChild(startButton)
-    cardHeader.innerHTML = "Let's take a test."
+    cardHeader.innerHTML = "Let's take a test.";
     startButton.innerHTML = "START";
 }
 
@@ -72,6 +72,11 @@ function answerButtonPress(event) {
     };
     if (target.matches('#submitButton')) {
         storeHighScore();
+        count = 60;
+        currentQuestion = 0;
+        cardBody.innerHTML = "";
+        timer.innerHTML = count;
+        start();
         return;
     };
 
@@ -146,7 +151,7 @@ function endQuiz() {
     showHighscores();
     cardBody.appendChild(name);
     cardBody.appendChild(input);
-    cardBody.appendChild(submit);    
+    cardBody.appendChild(submit);
     cardHeader.innerHTML = `<h1>High Scores</h1><h3>Your Score: ${count}</h3>`;
     name.innerHTML = "Enter your Name."
     input.innerHTML = "show high score";
@@ -161,7 +166,7 @@ var highScores = JSON.parse(localStorage.getItem("score") || "[]");
 function storeHighScore() {
 
     var userInput = document.getElementById("userInput");
-    var highScore = {           
+    var highScore = {
         name: userInput.value,
         score: count
     }
@@ -172,14 +177,12 @@ function storeHighScore() {
 
 function showHighscores() {
     var ul = document.createElement("ul");
-    
-    ul.setAttribute("class", "list-group mb-3");
-    
-    cardBody.appendChild(ul);
-    
-    // var highScores = JSON.parse(localStorage.getItem("score"))
 
-    for(var i = 0; i < highScores.length; i++){
+    ul.setAttribute("class", "list-group mb-3");
+
+    cardBody.appendChild(ul);
+
+    for (var i = 0; i < highScores.length; i++) {
         var li = document.createElement("li");
         li.setAttribute("class", "list-group-item")
         li.innerHTML = `${highScores[i].name}: ${highScores[i].score}`;
