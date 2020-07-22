@@ -134,7 +134,7 @@ function timerStart() {
 
 function endQuiz() {
 
-    var name = document.createElement("p")
+    var name = document.createElement("p");
     var input = document.createElement("input");
     var submit = document.createElement("button");
     input.setAttribute("class", "form-control");
@@ -143,9 +143,10 @@ function endQuiz() {
     submit.setAttribute("type", "submit")
     submit.setAttribute("class", "btn btn-primary mt-1")
     submit.id = 'submitButton'
+    showHighscores();
     cardBody.appendChild(name);
     cardBody.appendChild(input);
-    cardBody.appendChild(submit);
+    cardBody.appendChild(submit);    
     cardHeader.innerHTML = `<h1>High Scores</h1><h3>Your Score: ${count}</h3>`;
     name.innerHTML = "Enter your Name."
     input.innerHTML = "show high score";
@@ -155,7 +156,7 @@ function endQuiz() {
 
 
 }
-var highScores = [];
+var highScores = JSON.parse(localStorage.getItem("score") || "[]");
 
 function storeHighScore() {
 
@@ -165,11 +166,24 @@ function storeHighScore() {
         score: count
     }
     highScores.push(highScore);
+    highScores.sort((x, y) => (x.score > y.score) ? -1 : 1);
     localStorage.setItem("score", JSON.stringify(highScores));
 }
 
 function showHighscores() {
-
+    var ul = document.createElement("ul");
+    
+    ul.setAttribute("class", "list-group mb-3");
+    
+    cardBody.appendChild(ul);
+    
+    var data = JSON.parse(localStorage.getItem("score"))
+    for(var i = 0; i < data.length; i++){
+        var li = document.createElement("li");
+        li.setAttribute("class", "list-group-item")
+        li.innerHTML = `${data[i].name}: ${data[i].score}`;
+        ul.appendChild(li);
+    };
 }
 
 
