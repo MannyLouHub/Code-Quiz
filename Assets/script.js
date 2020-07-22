@@ -15,36 +15,36 @@ var countdown
 
 const testQuestions = [
     {
-        question: "Who am I?",
+        question: "Who is Manny's Best Friend?",
         answers: [
-            "David",
-            "Manny",
-            "Adventure Pirate",
-            "Spaceman",
+            "Shiqi",
+            "Lin",
+            "Josh",
+            "Lisa",
         ],
         correctAnswer: "1",
     },
 
     {
-        question: "Where are you?",
+        question: "In Manny's and Lin's relationship who does all the hard work?",
         answers: [
-            "Mars",
-            "Venus",
-            "Earth",
-            "Pluto",
+            "Manny",
+            "Chris",
+            "Lin",
+            "Li Yue",
         ],
         correctAnswer: "2",
     },
 
     {
-        question: "Is Dan a furry?",
+        question: "How much do you love Manny?",
         answers: [
-            "Yes",
-            "No",
-            "Maybe",
-            "It really depends on what time of day you ask him, because some would think he is a furry, but he never ever identified himself as a furry. unless you count the times during epsiodes where he said he was a furry but those times really dont count since he could of just been saying that as a joke for the episode.",
+            "A lot",
+            "A little bit",
+            "I dont love him. . .",
+            "More than anything.",
         ],
-        correctAnswer: "0"
+        correctAnswer: "3"
     },
 ]
 
