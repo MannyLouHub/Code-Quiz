@@ -49,7 +49,6 @@ const testQuestions = [
     },
 ]
 
-var questionsAnswers = testQuestions[currentQuestion].answers;
 
 function displayQuestions() {
 
@@ -59,9 +58,11 @@ function displayQuestions() {
 
 var buttonStore = ""
 
-displayQuestions();
+
 
 function displayAnswers() {
+
+    var questionsAnswers = testQuestions[currentQuestion].answers;
 
     for (let i = 0; i < questionsAnswers.length; i++) {
 
@@ -69,6 +70,8 @@ function displayAnswers() {
         cardBody.appendChild(questionButtons)
 
         questionButtons.setAttribute("class", " col-12 btn btn-primary mt-1");
+        questionButtons.setAttribute("id", i);
+
 
 
         questionButtons.innerHTML = questionsAnswers[i];
@@ -80,12 +83,34 @@ function displayAnswers() {
     }
 }
 
+function buttonPress(event) {
 
-displayAnswers();
+  var target = event.target;
 
-currentQuestion++
+  if(target.matches("button")){
+    currentQuestion++
+    cardBody.innerHTML=""
+    displayQuestions();
+    displayAnswers();
+  }
+  
+
+    // document.addEventListener("click" function(event){
+
+    // })
+}
+
+cardBody.addEventListener("click", buttonPress);
+
+
 
 displayQuestions();
 displayAnswers();
+// buttonPress();
+// debugger
+// currentQuestion++
 
-debugger
+// displayQuestions();
+// displayAnswers();
+
+// debugger
