@@ -1,18 +1,13 @@
 
+// JS Query Selectors
 var cardHeader = document.querySelector(".card-header");
-
 cardHeader.innerText = "Hello There?";
-
 var cardBody = document.querySelector(".card-body");
 
-// cardBody.innerHTML = "Yes? How are you?"
-
+// Value of Current Questions.
 var currentQuestion = 0
 
-// var questionButtons = document.querySelector(".btn");
-
-// var questionsAnswers = testQuestions[0].answers[0];
-
+// Array of Questoins. 
 
 const testQuestions = [
     {
@@ -50,6 +45,7 @@ const testQuestions = [
 ]
 
 
+// functions for displaying Questions.
 function displayQuestions() {
 
     cardHeader.innerHTML = testQuestions[currentQuestion].question;
@@ -59,6 +55,7 @@ function displayQuestions() {
 var buttonStore = ""
 
 
+// functions for displaying answers. 
 
 function displayAnswers() {
 
@@ -83,6 +80,9 @@ function displayAnswers() {
     }
 }
 
+
+//function for button press
+
 function buttonPress(event) {
 
   var target = event.target;
@@ -95,9 +95,6 @@ function buttonPress(event) {
   }
   
 
-    // document.addEventListener("click" function(event){
-
-    // })
 }
 
 cardBody.addEventListener("click", buttonPress);
@@ -106,11 +103,3 @@ cardBody.addEventListener("click", buttonPress);
 
 displayQuestions();
 displayAnswers();
-// buttonPress();
-// debugger
-// currentQuestion++
-
-// displayQuestions();
-// displayAnswers();
-
-// debugger
