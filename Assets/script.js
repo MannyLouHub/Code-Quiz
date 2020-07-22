@@ -177,11 +177,12 @@ function showHighscores() {
     
     cardBody.appendChild(ul);
     
-    var data = JSON.parse(localStorage.getItem("score"))
-    for(var i = 0; i < data.length; i++){
+    // var highScores = JSON.parse(localStorage.getItem("score"))
+
+    for(var i = 0; i < highScores.length; i++){
         var li = document.createElement("li");
         li.setAttribute("class", "list-group-item")
-        li.innerHTML = `${data[i].name}: ${data[i].score}`;
+        li.innerHTML = `${highScores[i].name}: ${highScores[i].score}`;
         ul.appendChild(li);
     };
 }
