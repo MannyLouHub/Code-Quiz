@@ -129,6 +129,15 @@ function displayAnswers() {
     }
 }
 
+//function for timer
+function timerStart() {
+    var count = 60;
+    var timer = document.getElementById("timer");
+    var countdown = setInterval(function () {
+        count--
+        timer.innerHTML = count;
+    }, 1000)
+}
 
 
 
