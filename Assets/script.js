@@ -1,11 +1,10 @@
 
 // JS Query Selectors
 var cardHeader = document.querySelector(".card-header");
-cardHeader.innerText = "Hello There?";
 var cardBody = document.querySelector(".card-body");
 
 // Value of Current Questions.
-var currentQuestion = 0
+var currentQuestion = -1
 
 
 
@@ -46,6 +45,56 @@ const testQuestions = [
     },
 ]
 
+// Start Button
+function start() {
+
+    var startButton = document.createElement("button")
+    startButton.setAttribute("class", " col-12 btn btn-primary mt-1");
+
+
+
+    cardBody.appendChild(startButton)
+    cardHeader.innerHTML = "Let's take a test."
+    startButton.innerHTML = "START";
+
+
+
+
+}
+
+//function for button press
+function buttonPress(event) {
+
+    var target = event.target;
+
+
+    if (target.matches("button")) {
+        currentQuestion++
+
+
+        if (currentQuestion < testQuestions.length) {
+
+            var correctAns = testQuestions[currentQuestion].correctAnswer
+
+            if (event.target.id !== correctAns) {
+                console.log("incorrect answer")
+            }
+            cardBody.innerHTML = ""
+            displayQuestions();
+            displayAnswers();
+
+
+        }
+        else {
+
+            cardHeader.innerHTML = "This is the high score";
+            cardBody.innerHTML = "show high score";
+        }
+
+
+    }
+
+}
 
 // functions for displaying Questions.
 function displayQuestions() {
@@ -57,7 +106,6 @@ function displayQuestions() {
 
 
 // functions for displaying answers. 
-
 function displayAnswers() {
 
     var questionsAnswers = testQuestions[currentQuestion].answers;
@@ -82,43 +130,11 @@ function displayAnswers() {
 }
 
 
-//function for button press
-
-function buttonPress(event) {
-
-    var target = event.target;
-    var correctAns = testQuestions[currentQuestion].correctAnswer
-
-    if (target.matches("button")) {
-        if (event.target.id !== correctAns) {
-            console.log("incorrect answer")
-        }
-
-        // debugger
-        currentQuestion++
-        if (currentQuestion < testQuestions.length) {
-
-            cardBody.innerHTML = ""
-            displayQuestions();
-            displayAnswers();
-        }
-        else {
-            cardHeader,innerHTML = "This is the high score";
-            cardBody.innerHTML = "show high score";
-        }
-
-
-    }
-
-}
 
 
 
+// Event Listner
 cardBody.addEventListener("click", buttonPress);
 
-function start (){
 
-}
-
-displayQuestions();
-displayAnswers();
+start();
