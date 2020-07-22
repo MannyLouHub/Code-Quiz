@@ -139,6 +139,7 @@ function endQuiz() {
     var submit = document.createElement("button");
     input.setAttribute("class", "form-control");
     input.setAttribute("type", "text");
+    input.id = "userInput"
     submit.setAttribute("type", "submit")
     submit.setAttribute("class", "btn btn-primary mt-1")
     submit.id = 'submitButton'
@@ -158,12 +159,17 @@ var highScores = [];
 
 function storeHighScore() {
 
-    var highScore = {
-        name: input.value,
+    var userInput = document.getElementById("userInput");
+    var highScore = {           
+        name: userInput.value,
         score: count
     }
     highScores.push(highScore);
     localStorage.setItem("score", JSON.stringify(highScores));
+}
+
+function showHighscores() {
+
 }
 
 
