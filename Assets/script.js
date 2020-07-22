@@ -7,6 +7,8 @@ var cardBody = document.querySelector(".card-body");
 // Value of Current Questions.
 var currentQuestion = 0
 
+
+
 // Array of Questoins. 
 
 const testQuestions = [
@@ -18,7 +20,7 @@ const testQuestions = [
             "Adventure Pirate",
             "Spaceman",
         ],
-        correctAnswer: 1,
+        correctAnswer: "1",
     },
 
     {
@@ -29,7 +31,7 @@ const testQuestions = [
             "Earth",
             "Pluto",
         ],
-        correctAnswer: 2,
+        correctAnswer: "2",
     },
 
     {
@@ -40,7 +42,7 @@ const testQuestions = [
             "Maybe",
             "It really depends on what time of day you ask him, because some would think he is a furry, but he never ever identified himself as a furry. unless you count the times during epsiodes where he said he was a furry but those times really dont count since he could of just been saying that as a joke for the episode.",
         ],
-        correctAnswer: 0
+        correctAnswer: "0"
     },
 ]
 
@@ -52,7 +54,6 @@ function displayQuestions() {
 
 }
 
-var buttonStore = ""
 
 
 // functions for displaying answers. 
@@ -85,21 +86,39 @@ function displayAnswers() {
 
 function buttonPress(event) {
 
-  var target = event.target;
+    var target = event.target;
+    var correctAns = testQuestions[currentQuestion].correctAnswer
 
-  if(target.matches("button")){
-    currentQuestion++
-    cardBody.innerHTML=""
-    displayQuestions();
-    displayAnswers();
-  }
-  
+    if (target.matches("button")) {
+        if (event.target.id !== correctAns) {
+            console.log("incorrect answer")
+        }
+
+        // debugger
+        currentQuestion++
+        if (currentQuestion < testQuestions.length) {
+
+            cardBody.innerHTML = ""
+            displayQuestions();
+            displayAnswers();
+        }
+        else {
+            cardHeader,innerHTML = "This is the high score";
+            cardBody.innerHTML = "show high score";
+        }
+
+
+    }
 
 }
 
+
+
 cardBody.addEventListener("click", buttonPress);
 
+function start (){
 
+}
 
 displayQuestions();
 displayAnswers();
