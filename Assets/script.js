@@ -12,37 +12,58 @@ let countdown;
 
 const testQuestions = [
   {
-    question: "Who is Manny's Best Friend?",
+    question: 'Inside which HTML element do we put the JavaScript?',
     answers: [
-      'Shiqi',
-      'Lin',
-      'Josh',
-      'Lisa',
-    ],
-    correctAnswer: '1',
-  },
-
-  {
-    question: "In Manny's and Lin's relationship who does all the hard work?",
-    answers: [
-      'Manny',
-      'Chris',
-      'Lin',
-      'Li Yue',
+      '<js>',
+      '<scripting>',
+      '<script>',
+      '<javascript>',
     ],
     correctAnswer: '2',
   },
 
   {
-    question: 'How much do you love Manny?',
+    question: 'Where is the correct place to insert a JavaScript?',
     answers: [
-      'A lot',
-      'A little bit',
-      'I dont love him. . .',
-      'More than anything.',
+      'The <head> section',
+      'The <body> section',
+      'The <url> section',
+      'Both the <head> section and the <body> section are correct',
     ],
     correctAnswer: '3',
   },
+
+  {
+    question: 'What is the correct syntax for reffering to an external script called "xxx.js"?',
+    answers: [
+      '<script href = "xxx.js">',
+      '<script name = "xxx.js">',
+      '<script src = "xxx.js">',
+      '<script link = "xxx.js">',
+    ],
+    correctAnswer: '2',
+  },
+  {
+    question: 'How do you write "Hello World" in an alert box?',
+    answers: [
+      'alert("Hello World)"',
+      'alertBox("Hello World)"',
+      'msgBox("Hello World)"',
+      'msg("Hello World)"',
+    ],
+    correctAnswer: '0',
+  },
+  {
+    question: 'How do create a function in JavaScript?',
+    answers: [
+      'function = myFunction()',
+      'function myFunction()',
+      'function.myFunction()',
+      'function:myFunction()',
+    ],
+    correctAnswer: '1',
+  },
+
 ];
 
 // Start Button
@@ -110,7 +131,7 @@ function displayAnswers() {
     cardBody.appendChild(questionButtons);
     questionButtons.setAttribute('class', ' col-12 btn btn-primary mt-1');
     questionButtons.setAttribute('id', i);
-    questionButtons.innerHTML = questionsAnswers[i];
+    questionButtons.innerText = questionsAnswers[i];
   }
 }
 
