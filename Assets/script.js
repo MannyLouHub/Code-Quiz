@@ -5,7 +5,7 @@ const cardBody = document.querySelector('.card-body');
 // value of Current Questions.
 let currentQuestion = 0;
 // value of Timer
-let count = 60;
+let count = 100;
 let countdown;
 
 // Array of Questoins.
@@ -75,6 +75,7 @@ function start() {
   cardBody.appendChild(startButton);
   cardHeader.innerHTML = "Let's take a test.";
   startButton.innerHTML = 'START';
+  timer.innerHTML = `Score: ${count}`
 }
 
 // function for button press
@@ -91,10 +92,10 @@ function answerButtonPress(event) {
 
   if (target.matches('#submitButton')) {
     storeHighScore();
-    count = 60;
+    count = 100;
     currentQuestion = 0;
     cardBody.innerHTML = '';
-    timer.innerHTML = count;
+    timer.innerHTML = `Score: ${count}`;
     start();
     return;
   }
@@ -137,11 +138,11 @@ function displayAnswers() {
 
 // function for timer
 function timerStart() {
-  count = 60;
+  count = 100;
   const timer = document.getElementById('timer');
   countdown = setInterval(() => {
     count--;
-    timer.innerHTML = count;
+    timer.innerHTML = `Score: ${count}`;
 
     if (count <= 0) {
       cardBody.innerHTML = '';
@@ -171,7 +172,7 @@ function endQuiz() {
   input.innerHTML = 'show high score';
   submit.innerHTML = 'Submit';
   clearInterval(countdown);
-  timer.innerHTML = count;
+  timer.innerHTML = `Score: ${count}`;
 }
 const highScores = JSON.parse(localStorage.getItem('score') || '[]');
 
